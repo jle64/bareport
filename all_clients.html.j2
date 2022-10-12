@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>bareport - clients overview</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="logo.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+</head>
+<body>
+<div class="navbar">
+  <a href="index.html">Clients list</a>
+  | Clients overview
+  | <a href="nodata.html">Clients without data</a>
+</div>
+<h1>Clients overview</h1>
+<div class="deck">
+  <div class="card">
+    <embed type="image/svg+xml" src="svg/timelines/clients/all_clients.svg" alt="Clients timeline" style="width:100%">
+    <div class="container">
+      <h4><b>All clients</b></h4>
+      <a class="major-link" href="svg/timelines/clients/all_clients.svg"><div class="sub-container">all clients volume usage over time</div></a>
+    </div>
+  </div> 
+  {%- for client in clients %}
+  <div class="card">
+    <embed type="image/svg+xml" src="svg/treemaps/clients/{{ client }}.svg" alt="Client treemap" style="width:100%">
+    <div class="container">
+      <h4><b>{{ client }}</b></h4>
+      <a class="major-link" href="svg/treemaps/clients/{{ client }}.svg"><div class="sub-container">volume usage repartition</div></a>
+      <a class="major-link" href="svg/timelines/clients/{{ client }}.svg"><div class="sub-container">hosts volume usage over time</div></a>
+      <a class="major-link" href="clients/{{ client }}.html"><div class="sub-container">all client graphs</div></a>
+      <p>
+        {{ " ".join(clients[client]["instances"]) }}
+        | {{ (clients[client]["total"].items() | sort | last | last / 2**30) | round(1) }} Gio
+        | {{ clients[client]["hosts"] | length }} hosts
+        | <a href="html/timelines/clients/{{ client }}.html">table</a>
+        | <a href="json/{{ client }}.json">json</a>
+      </p>
+    </div>
+  </div> 
+  {%- endfor -%}
+</div> 
+</body>
+</html>

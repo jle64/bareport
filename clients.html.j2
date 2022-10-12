@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>bareport - {{ client }}</title>
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/png" href="../logo.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+</head>
+<body>
+<div class="navbar">
+  <a href="../index.html">Clients list</a>
+  | <a href="../all_clients.html">Clients overview</a>
+  | <a href="../nodata.html">Clients without data</a>
+</div>
+<h1>{{ client }}</h1>
+<div class="deck">
+  <div class="card">
+    <embed type="image/svg+xml" src="../svg/treemaps/clients/{{ client }}.svg" alt="Client repartition treemap" style="width:100%">
+    <div class="container">
+      <h4><b>total treemap</b></h4>
+      <a class="major-link" href="../svg/treemaps/clients/{{ client }}.svg"><div class="sub-container">volume usage repartition</div></a>
+      <p>
+        {{ " ".join(client_data["instances"]) }}
+        | {{ (client_data["total"].items() | sort | last | last / 2**30) | round(1) }} Gio
+        | {{ client_data["hosts"] | length }} hosts
+        | <a href="../html/timelines/clients/{{ client }}.html">table</a>
+        | <a href="../json/{{ client }}.json">json</a>
+      </p>
+    </div>
+  </div> 
+  <div class="card">
+    <embed type="image/svg+xml" src="../svg/timelines/clients/{{ client }}_total.svg" alt="Client total timeline" style="width:100%">
+    <div class="container">
+      <h4><b>total timeline</b></h4>
+      <a class="major-link" href="../svg/timelines/clients/{{ client }}_total.svg"><div class="sub-container">total volume usage over time</div></a>
+      <p>
+        {{ " ".join(client_data["instances"]) }}
+        | {{ (client_data["total"].items() | sort | last | last / 2**30) | round(1) }} Gio
+        | {{ client_data["hosts"] | length }} hosts
+        | <a href="../html/timelines/clients/{{ client }}.html">table</a>
+        | <a href="../json/{{ client }}.json">json</a>
+      </p>
+    </div>
+  </div> 
+  <div class="card">
+    <embed type="image/svg+xml" src="../svg/timelines/clients/{{ client }}.svg" alt="Client hosts timeline" style="width:100%">
+    <div class="container">
+      <h4><b>hosts timeline</b></h4>
+      <a class="major-link" href="../svg/timelines/clients/{{ client }}.svg"><div class="sub-container">hosts volume usage over time</div></a>
+      <p>
+        {{ " ".join(client_data["instances"]) }}
+        | {{ (client_data["total"].items() | sort | last | last / 2**30) | round(1) }} Gio
+        | {{ client_data["hosts"] | length }} hosts
+        | <a href="../html/timelines/clients/{{ client }}.html">table</a>
+        | <a href="../json/{{ client }}.json">json</a>
+      </p>
+    </div>
+  </div> 
+  {%- for host in hosts %}
+  <div class="card">
+    <embed type="image/svg+xml" src="../svg/timelines/hosts/{{ host }}.svg" alt="Host filesets timeline" style="width:100%">
+    <div class="container">
+      <h4><b>{{ host }} filesets timeline</b></h4>
+      <a class="major-link" href="../svg/timelines/hosts/{{ host }}.svg"><div class="sub-container">filesets volume usage over time</div></a>
+      <p>
+        {{ (hosts[host]["total"].items() | sort | last | last / 2**30) | round(1) }} Gio
+        | {{ hosts[host]["filesets"] | length }} filesets
+        | <a href="../html/timelines/hosts/{{ host }}.html">table</a>
+      </p>
+    </div>
+  </div>
+  {%- endfor -%}
+</div>
+</body>
+</html>

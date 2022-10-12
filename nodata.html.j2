@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>bareport - clients without data</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/png" href="logo.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+</head>
+<body>
+<div class="navbar">
+  <a href="index.html">Clients list</a>
+  | <a href="all_clients.html">Clients overview</a>
+  | Clients without data
+</div>
+<h1>Clients without data</h1>
+<p class="important">The following client databases have been found but don't contain any successfull backup job or are not accessible to Bareport.</p>
+<div class="deck">
+{%- for client in clients %}
+  <div class="card">
+  {{ client }}
+  </div>
+{%- endfor -%}
+</div>
+</body>
+</html>

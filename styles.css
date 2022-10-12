@@ -1,0 +1,74 @@
+body {
+  font-family: Ubuntu, Sans-Serif;
+  background-color: #240058;
+  color: rgba(0, 0, 0, 0.87);
+  text-align: center;
+}
+
+h1, .important {
+  color: #efefef;
+}
+
+h4 {
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.87);
+  font-family: Ubuntu, sans-serif;
+  font-size: 24.2px;
+  font-weight: 700;
+}
+
+a { 
+  color: #8800f9
+}
+
+table, th, td {
+  background-color: #f9f9f9;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+}
+
+.deck {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  column-gap: 15px;
+  row-gap: 15px;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22.5px;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: #f9f9f9;
+  padding: 5px;
+}
+.container {
+  padding: 2px 16px;
+}
+
+.sub-container {
+  padding: 6px 16px;
+  background: #e9e9e9;
+  margin: 10px;
+}
+.sub-container:hover {
+  background: #efefef;
+}
+
+.major-link {
+  text-decoration: none;
+}
+
+.navbar {
+  padding: 15px;
+  background: #e9e9e9;
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(221,221,221,1) 100%);
+}
+
+.card:hover, table:hover {
+  box-shadow: 0 8px 16px #ee00ff;
+}
+

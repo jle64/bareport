@@ -1,0 +1,19 @@
+[instances]
+# postgreSQL instances, each needs a dedicated section
+names=postgresql1,postgresql2
+
+[postgresql1]
+host=localhost
+user=postgres
+
+[postgresql2]
+host=distanthost
+user=xyzzy
+password=abc123
+
+[clients]
+#if unspecified, will run for all databases (except postgres)
+#names=client1,client2
+
+[web]
+path=/var/www
